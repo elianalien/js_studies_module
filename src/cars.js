@@ -39,6 +39,27 @@ const carJSON = `
 
 // parse the string into JSON array object
 const cars = JSON.parse(carJSON);
-console.log(cars);
 
-export { cars }
+const formatCar = car => {
+    const {
+        model,
+        year,
+        maker,
+        transmission,
+        price
+    } = car;
+
+    return `${year} ${maker} ${model} ${transmission}: $${price}`;
+}
+
+const generateReport = (cars, maxPrice) =>
+    cars
+        .filter(car => car.price > maxPrice)
+        .map(formatCar)
+        .join('\n');
+
+const getCars = () => new Promise(resolve => {
+    setTimeout(() => resolve(cars), 2000)
+});
+
+export { cars, generateReport, getCars }

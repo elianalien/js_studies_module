@@ -1,30 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { cars } from './cars';
+import { cars, generateReport, getCars } from './cars';
 
-const formatCar = car => {
-    const {
-        model,
-        year,
-        maker,
-        transmission,
-        price
-    } = car;
+document.getElementById('message-element').textContent = 'Loading...';
 
-    return `${year} ${maker} ${model} ${transmission}: $${price}`;
-}
+getCars().then(
+    cars => {
+        const message = generateReport(cars, 10000);
+        document.getElementById('message-element').textContent = message;
+    }
+)
 
-const generateReport = (cars, maxPrice) =>
-    cars
-        .filter(car => car.price > maxPrice)
-        .map(formatCar)
-        .join('\n');
+// const App = () => (
+//     <div> Hello!!!</div>
+// );
 
-const message = generateReport(cars, 20000);
-document.getElementById('message-element').textContent = message;
-
-const App = () => (
-    <div> Hello!!!</div>
-);
-
-ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
