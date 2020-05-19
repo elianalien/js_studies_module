@@ -1,3 +1,5 @@
+Catatan urutan kejadian
+----
 1. ```npm init ```
 2. ```npm install @babel/core @babel/preset-env @babel/preset-react --save-dev```
 3. ```npm install react react-dom --save ```
