@@ -1,3 +1,6 @@
+Catatan urutan kejadian
+
+
 ```
 npm init 
 npm install @babel/core @babel/preset-env @babel/preset-react --save-dev
